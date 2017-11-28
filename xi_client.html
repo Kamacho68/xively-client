@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>XI Client</title>
+<!-- Latest compiled and minified Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+
+<hr>
+	
+<form class="form-horizontal">
+
+<!-- Start of Connect/Disconnect -->
+<fieldset>
+
+<!-- Form Name -->
+<legend>Client Connection</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="accountId">Account ID</label>  
+  <div class="col-md-5">
+  <input id="accountId" name="accountId" placeholder="Account ID" class="form-control input-md" type="text">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="brokerUrl">Broker URL</label>  
+  <div class="col-md-5">
+  <input id="brokerUrl" name="brokerUrl" placeholder="Broker URL" class="form-control input-md" type="text">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="port">Boker Port</label>  
+  <div class="col-md-2">
+  <input id="port" name="port" placeholder="Boker Port" class="form-control input-md" type="text">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="username">Username/Device ID</label>  
+  <div class="col-md-5">
+  <input id="username" name="username" placeholder="Username/Device ID" class="form-control input-md" type="text">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="password">Device Password</label>  
+  <div class="col-md-5">
+  <input id="password" name="password" placeholder="Device Password" class="form-control input-md" type="text">
+    
+  </div>
+</div>
+
+<!-- Button (Double) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="connectToBroke">Connect</label>
+  <div class="col-md-8">
+    <button type="button" id="connectToBroke" name="connectToBroke" class="btn btn-success">Connect</button>
+    <button type="button" id="disconnectFromBroker" name="disconnectFromBroker" class="btn btn-danger" disabled>Disconnect</button>
+  </div>
+</div>
+
+</fieldset>
+<!-- End of Connect/Disconnect -->
+
+<hr>
+
+<!-- Start Subscribe to Own Channel -->
+
+<fieldset>
+
+<!-- Form Name -->
+<legend>Own Subscribe</legend>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="selectbasic">Subscribe to own device</label>
+  <div class="col-md-2">
+    <select id="selectbasic" name="selectbasic" class="form-control">
+      <option value="Yes">Yes</option>
+      <option value="No" selected="selected">No</option>
+    </select>
+  </div>
+</div>
+
+<div id="ownDeviceDetails">
+	<!-- Text input -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="subscribeOwnDeviceId">Device ID</label>  
+	  <div class="col-md-5">
+	  <input id="subscribeOwnDeviceId" name="subscribeOwnDeviceId" placeholder="Device ID" class="form-control input-md" type="text">
+	    
+	  </div>
+	</div>
+	
+	<!-- Text input -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="ownTopicToSubscribe">Topic/Channel</label>  
+	  <div class="col-md-5">
+	  <input id="ownTopicToSubscribe" name="ownTopicToSubscribe" placeholder="Topic/Channel" class="form-control input-md" type="text">
+	    
+	  </div>
+	</div>
+	<!-- Button (Double) -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="subscribeOwn"></label>
+	  <div class="col-md-8">
+	    <button type="button" id="subscribeOwn" name="subscribeOwn" class="btn btn-success" disabled>Subscribe</button>
+	    <button type="button" id="unsubscribeOwn" name="unsubscribeOwn" class="btn btn-danger" disabled>Unsubscribe</button>
+	  </div>
+	</div>
+</div>
+
+</fieldset>
+
+<!-- Start Subscribe to Own Channel -->
+
+<hr>
+
+<!-- Start of Subscribe -->
+<fieldset>
+
+<!-- Form Name -->
+<legend>Subscribe</legend>
+
+<!-- Text input -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="subscribeDeviceId">Device ID</label>  
+  <div class="col-md-5">
+  <input id="subscribeDeviceId" name="subscribeDeviceId" placeholder="Device ID" class="form-control input-md" type="text">
+    
+  </div>
+</div>
+
+<!-- Text input -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="topicToSubscribe">Topic/Channel</label>  
+  <div class="col-md-5">
+  <input id="topicToSubscribe" name="topicToSubscribe" placeholder="Topic/Channel" class="form-control input-md" type="text">
+    
+  </div>
+</div>
+
+<!-- Button (Double) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="subscribe"></label>
+  <div class="col-md-8">
+    <button type="button" id="subscribe" name="subscribe" class="btn btn-success" disabled>Subscribe</button>
+    <button type="button" id="unsubscribe" name="unsubscribe" class="btn btn-danger" disabled>Unsubscribe</button>
+  </div>
+</div>
+
+</fieldset>
+<!-- End of Subscribe -->
+
+<hr>
+
+<!-- Start of Publish -->
+<fieldset>
+
+<!-- Form Name -->
+<legend>Publish</legend>
+
+<!-- Text input -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="publishDeviceId">Device ID</label>  
+  <div class="col-md-5">
+  <input id="publishDeviceId" name="publishDeviceId" placeholder="Enter the device ID you want to publish." class="form-control input-md" type="text">
+    
+  </div>
+</div>
+
+<!-- Text input -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="topicToPublish">Topic/Channel</label>  
+  <div class="col-md-5">
+  <input id="topicToPublish" name="topicToPublish" placeholder="To what topic/channel you want to publish." class="form-control input-md" type="text">
+    
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="payload">Payload/Message</label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="payload" name="payload" placeholder="Type your message you want to sent here."></textarea>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="publishMessage"></label>
+  <div class="col-md-4">
+    <button type="button" id="publishMessage" name="publishMessage" class="btn btn-primary" disabled>Publish</button>
+  </div>
+</div>
+
+</fieldset>
+
+<!-- End of Publish -->
+
+<!-- Start of MQTT Trace Log -->
+
+<fieldset>
+
+<!-- Form Name -->
+<legend>MQTT Log</legend>
+
+<!-- Textarea -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="mqttLog"></label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="mqttLog" name="mqttLog" cols="150" rows="10"></textarea>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="clearConsole"></label>
+  <div class="col-md-4">
+    <button type="button" id="clearConsole" name="clearConsole" class="btn btn-primary">Clear Console</button>
+  </div>
+</div>
+
+</fieldset>
+
+<!-- End of MQTT Trace Log -->
+
+
+<!-- Include JQuery library from CDN -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<!-- Include Paho JavaScript MQTT Client from CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+
+<!-- Include mqtt_client JS -->
+<!-- <script src="js/mqtt_client.js"></script> -->
+
+<script type="text/javascript">
+
+var mqtt_broker_url = '';
+var mqtt_client_id = '';
+var mqtt_port = '';
+var mqtt_path = 'mqtt';
+
+//Create a MQTT client instance 
+var mqtt_client ='';
+
+// Handle the form labels block
+if (window.matchMedia('(min-width: 992px)').matches) {
+	$('.control-label').width('13%');
+}
+
+// Handle the MQTT Log textarea
+var width = 0.6*$(window).width();
+$('#mqttLog').width(width);
+
+/* if ($('#selectbasic').val() == "No") {
+	console.log($('#selectbasic').val());
+} */
+$('#ownDeviceDetails').hide();
+
+$( "#selectbasic" ).change(function() {
+	if ($(this).val() == "No") {
+		$('#ownDeviceDetails').hide();
+	} else {
+		$( "#subscribeOwnDeviceId" ).val($( "#username" ).val());
+		$('#ownDeviceDetails').show();
+	}
+});
+
+
+//Set the variables
+/* $( "input[name='brokerUrl']" ).change(function() {
+	mqtt_broker_url = $( this ).val();
+	mqqt_init();
+});
+$( "input[name='port']" ).change(function() {
+	mqtt_port = Number($( this ).val());
+	mqqt_init();
+}); */
+
+//Get Formatted time in Hour:Minute:Seconds AM/PM format
+function getFromattedTime() {
+	var dt = new Date();
+	var hours = dt.getHours() === 0 ? "12" : dt.getHours() > 12 ? dt.getHours() - 12 : dt.getHours();
+	var minutes = (dt.getMinutes() < 10 ? "0" : "") + dt.getMinutes();
+	var seconds = dt.getSeconds();
+	var ampm = dt.getHours() < 12 ? "AM" : "PM";
+	var formattedTime = hours + ":" + minutes + ":" + seconds + " " + ampm;
+	return formattedTime;
+}
+
+/* function mqqt_init() {
+	
+	if (mqtt_broker_url != '' && mqtt_port != '') {
+		
+		//Create a MQTT Client instance
+		mqtt_client = new Paho.MQTT.Client(
+				mqtt_broker_url,
+				mqtt_port,
+				mqtt_client_id
+		);
+		
+		// set callback handlers
+		mqtt_client.onConnectionLost = onConnectionLost;
+		mqtt_client.onMessageArrived = onMessageArrived;
+		mqtt_client.onMessageDelivered  = onMessageDelivered ;
+	}
+} */
+
+//called when the client loses its connection
+function onConnectionLost(responseObject) {
+  if (responseObject.errorCode !== 0) {
+	  displayMessageConsole("Connection Lost with MQTT Broker. Error: " + "\"" +responseObject.errorMessage + "\"");
+  }
+}
+
+//called when a message arrives
+function onMessageArrived(message) {
+	displayMessageConsole("MQTT Message Recieved. "  + " Message: " + "\"" +  message.payloadString + "\"" + " MQTT Topic: " + "\"" + message.destinationName + "\"" + " QoS Value: " + "\"" + message.qos + "\"");
+} 
+
+//called when a message delivery
+function onMessageDelivered(message) {
+	displayMessageConsole("MQTT Message Ddelivered successfully. "  + " Message: " + "\"" +  message.payloadString + "\"" + " MQTT Topic: " + "\"" + message.destinationName + "\"" + " QoS Value: " + "\"" + message.qos + "\"");
+} 
+
+//called when the client connects
+function onConnect() {
+	
+	// enable and disable buttons
+	$("#connectToBroker").prop("disabled",true);
+    $("#disconnectFromBroker").prop("disabled",false);
+    
+ 	// enable subscriptions buttons
+    $("#subscribe").prop("disabled",false);
+    $("#subscribeOwn").prop("disabled",false);
+
+    // enable publish button
+    $("#publishMessage").prop("disabled",false);
+    
+  // Once a connection has been made, make a subscription and send a message.
+  displayMessageConsole("Connected with MQTT Broker: " + "\"" + mqtt_broker_url + "\"");
+}
+
+//Connect the client
+$("#connectToBroke").click(function () {
+	
+	// Set the variables
+	mqtt_broker_url = $('input[name=brokerUrl]').val();
+	mqtt_client_id = '';
+	mqtt_port = Number(document.getElementById("port").value);
+	
+	var username = document.getElementById("username").value;
+	var password = document.getElementById("password").value;
+	
+	//Create a MQTT Client instance
+	mqtt_client = new Paho.MQTT.Client(mqtt_broker_url,mqtt_port, mqtt_client_id);
+	
+ 	// set callback handlers
+	mqtt_client.onConnectionLost = onConnectionLost;
+	mqtt_client.onMessageArrived = onMessageArrived;
+	mqtt_client.connect({
+		userName: username,
+		password: password,
+		useSSL: true,
+		onSuccess: onConnect
+	});
+});
+
+//Disconnect the client
+$("#disconnectFromBroker").click(function () {
+	mqtt_client.disconnect();
+	
+	$("#disconnectFromBroker").prop("disabled", true);
+    $("#connectToBroker").prop("disabled", false);
+    
+    $("#subscribe").prop("disabled", true);
+    $("#unsubscribe").prop("disabled", true);
+    
+    $("#subscribeOwn").prop("disabled", true);
+    $("#unsubscribeOwn").prop("disabled", true);
+    
+	displayMessageConsole("MQTT Client is disconnected");
+});
+
+/* Subscribe to MQTT Topic/Channel */
+$("#subscribe").click(function () {
+	var accountId = document.getElementById("accountId").value;
+	var deviceId = document.getElementById("subscribeDeviceId").value; // Username/Device id
+	var mqtt_topic =  document.getElementById("topicToSubscribe").value; // Topic/Channel to subscribe to
+
+	subscribeToTopic(accountId,deviceId,mqtt_topic);
+	$("#unsubscribe").prop("disabled", false);
+});
+
+$("#subscribeOwn").click(function () {
+	var accountId = document.getElementById("accountId").value;
+	var deviceId = document.getElementById("subscribeOwnDeviceId").value; // Username/Device id
+	var mqtt_topic =  document.getElementById("ownTopicToSubscribe").value; // Topic/Channel to subscribe to
+
+	subscribeToTopic(accountId,deviceId,mqtt_topic);
+	$("#unsubscribeOwn").prop("disabled", false);
+});
+
+function subscribeToTopic(accountId, deviceId, mqtt_topic) {
+	
+	mqtt_client.subscribe("xi/blue/v1/" + accountId + "/d/" + deviceId + "/" + mqtt_topic, {
+		qos: 0,
+		invocationContext: {
+			topic: mqtt_topic
+		},
+		onSuccess: onTopicSubscribedSuccess,
+		onFailure: onTopicSubscribedFailure
+	});
+}
+
+function onTopicSubscribedSuccess(response) {
+	if (response != null) {
+		displayMessageConsole("Subscribed to MQTT Topic: " + "\"" + response.invocationContext.topic + "\"");
+		//console.log("invocationContextc: " + "\"" + JSON.stringify(response) + "\"");
+	} else {
+		displayMessageConsole("Topic subscribed successfully");
+	}
+}
+
+function onTopicSubscribedFailure(response) {
+	if (response != null) {
+		displayMessageConsole("Topic '" + response.invocationContext.topic + "' could not be subscribed to.");
+	} else {
+		displayMessageConsole("Topic could not be subscribed to.");
+	}
+}
+
+/* Unsubscribe from topic/channel */
+$("#unsubscribe").click(function () {
+	var accountId = document.getElementById("accountId").value;
+	var deviceId = document.getElementById("subscribeDeviceId").value; // Username/Device id
+	var mqtt_topic =  document.getElementById("topicToSubscribe").value; // Topic/Channel to unsubscribe from
+	
+	unsubscribeFromTopic(accountId,deviceId,mqtt_topic);
+	
+	$("#unsubscribe").prop("disabled", true);
+	$("#subscribe").prop("disabled", false);
+});
+
+$("#unsubscribeOwn").click(function () {
+	var accountId = document.getElementById("accountId").value;
+	var deviceId = document.getElementById("subscribeOwnDeviceId").value; // Username/Device id
+	var mqtt_topic =  document.getElementById("ownTopicToSubscribe").value; // Topic/Channel to subscribe to
+	
+	unsubscribeFromTopic(accountId,deviceId,mqtt_topic);
+	
+	$("#unsubscribeOwn").prop("disabled", true);
+	$("#subscribeOwn").prop("disabled", false);
+});
+
+function unsubscribeFromTopic (accountId, deviceId, mqtt_topic) {
+	
+	mqtt_client.unsubscribe("xi/blue/v1/" + accountId + "/d/" + deviceId + "/" + mqtt_topic, {
+	    invocationContext: {
+            topic: mqtt_topic
+        },
+        onSuccess: onTopicUnsubscribedSuccess,
+        onFailure: onTopicUnsubscribedFailure
+	});
+}
+
+function onTopicUnsubscribedSuccess(response) {
+	if (response != null) {
+		displayMessageConsole("Topic '" + response.invocationContext.topic + "' unsubscribed successfully");
+	} else {
+		displayMessageConsole("Topic unsubscribed successfully");
+	}
+}
+
+function onTopicUnsubscribedFailure(response) {
+	if (response != null) {
+		displayMessageConsole("Topic '" + response.invocationContext.topic + "' could not be unsubscribed");
+	} else {
+		displayMessageConsole("Topic could not be unsubscribed");
+	}
+}
+
+/* Publish Message */
+$("#publishMessage").click(function () {
+	
+	var accountId = document.getElementById("accountId").value;
+	var deviceId = document.getElementById("publishDeviceId").value; // Username/Device id
+	var payload = document.getElementById("payload").value; // payload, message to publish
+	var topicToPublish = document.getElementById("topicToPublish").value; //topic/channel to publish to
+	
+	var topic = "xi/blue/v1/" + accountId + "/d/" + deviceId + "/";
+	
+		if (topicToPublish != "") {
+		topic += topicToPublish;
+	} else {
+		alert('No topic was porvided');
+		return;
+	}
+	mqtt_client.send(
+			topic,
+			payload,
+			0,
+			false
+	);
+	displayMessageConsole("Published into topic '" + topic + "': " + payload);
+});
+
+//Set MQTT Messages to TextArea
+function displayMessageConsole(text) {
+	document.getElementById("mqttLog").value = document.getElementById("mqttLog").value + getFromattedTime().toString() + ":  " + text + "\n";
+	document.getElementById('mqttLog').scrollTop = document.getElementById('mqttLog').scrollHeight;
+}
+
+//Clear Console 
+$("#clearConsole").click(function () {
+	document.getElementById("mqttLog").value = document.getElementById("mqttLog").defaultValue;
+});
+
+</script>
+</body>
+</html>
