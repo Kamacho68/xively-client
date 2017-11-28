@@ -1,7 +1,7 @@
 var http = require('http');
 var fs = require('fs');
 var hostname = '127.0.0.1';
-var port = 3001;
+var port = 8080;
 
 fs.readFile('xi_client.html', function(err, html){
 	if(err){
